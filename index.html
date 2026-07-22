@@ -100,8 +100,24 @@
         .leadership-box p { font-size: 12px; font-weight: 600; color: var(--govt-red); margin: 0 0 10px 0;}
         .leadership-divider { border-top: 1px dashed #ccc; margin: 15px 0; }
 
-        #heroCarousel { border: 1px solid var(--border-color); height: 100%; min-height: 380px;}
-        .carousel-item img { height: 380px; object-fit: cover; }
+        /* PERFECT 16:9 ASPECT RATIO FIX FOR CAROUSEL */
+        #heroCarousel { 
+            border: 1px solid var(--border-color); 
+            border-radius: 2px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            width: 100%;
+            aspect-ratio: 16 / 9; /* The exact 16:9 ratio */
+            overflow: hidden;
+            background: #000;
+        }
+        .carousel-inner, .carousel-item {
+            height: 100%;
+        }
+        .carousel-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
         .carousel-caption { background: rgba(0, 33, 71, 0.85); bottom: 0; left: 0; width: 100%; padding: 12px; text-align: left; border-top: 2px solid var(--govt-saffron);}
         .carousel-caption h5 { font-size: 16px; font-weight: 700; margin: 0; text-transform: uppercase;}
 
@@ -147,8 +163,7 @@
             .update-bar { flex-direction: column; }
             .update-title { width: 100%; text-align: center; }
             .nav-link { padding: 10px 15px !important; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
-            #heroCarousel { min-height: 250px; margin-bottom: 20px;}
-            .carousel-item img { height: 250px; }
+            /* Carousel scales automatically thanks to aspect-ratio */
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .govt-panel { height: auto; }
         }
@@ -185,9 +200,8 @@
                 <h2>পশ্চিম বর্ধमान जिला परिषद</h2>
                 <p>Government of West Bengal</p>
             </div>
-            <div class="logo-box d-none d-lg-block">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Emblem_of_India.svg/800px-Emblem_of_India.svg.png" alt="Govt of India" style="height: 75px;">
-            </div>
+            <!-- Empty div to keep the center text perfectly balanced -->
+            <div class="logo-box d-none d-lg-block" style="width: 85px;"></div>
         </div>
     </header>
 
@@ -284,22 +298,32 @@
                     </div>
                 </div>
 
-                <!-- CENTER COLUMN: CAROUSEL -->
+                <!-- CENTER COLUMN: CAROUSEL (16:9) -->
                 <div class="col-lg-6">
-                    <div id="heroCarousel" class="carousel slide govt-panel" data-bs-ride="carousel" style="padding:0; margin-bottom: 20px;">
-                        <div class="carousel-inner h-100">
-                            <div class="carousel-item active h-100">
-                                <img src="https://images.unsplash.com/photo-1596404987081-32924b1cb56d?auto=format&fit=crop&q=80&w=1000" class="d-block w-100" alt="Scheme">
+                    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 20px;">
+                        <div class="carousel-inner">
+                            <!-- Slide 1 -->
+                            <div class="carousel-item active">
+                                <img src="https://www.psbzp.org/Assets/Images/Banner/gate.jpg" alt="Zilla Parishad Gate">
+                                <div class="carousel-caption">
+                                    <h5>Paschim Bardhaman Zilla Parishad</h5>
+                                    <p class="mb-0 small d-none d-md-block">Administrative Building & Headquarters.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-item">
+                                <img src="https://www.psbzp.org/Assets/Images/Banner/jpeg-optimizer_Back00.jpg" alt="Development Works">
                                 <div class="carousel-caption">
                                     <h5>Development Works in Zilla Parishad</h5>
                                     <p class="mb-0 small d-none d-md-block">Empowering rural economy through infrastructure and health.</p>
                                 </div>
                             </div>
-                            <div class="carousel-item h-100">
-                                <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=1000" class="d-block w-100" alt="District">
+                            <!-- Slide 3 -->
+                            <div class="carousel-item">
+                                <img src="https://www.psbzp.org/Assets/Images/Banner/jpeg-optimizer_Front00copy.jpg" alt="Rural Development">
                                 <div class="carousel-caption">
-                                    <h5>Paschim Bardhaman District</h5>
-                                    <p class="mb-0 small d-none d-md-block">The 23rd district of West Bengal, known for its industrial heritage.</p>
+                                    <h5>Progressive Paschim Bardhaman</h5>
+                                    <p class="mb-0 small d-none d-md-block">The 23rd district of West Bengal, moving towards digital and rural empowerment.</p>
                                 </div>
                             </div>
                         </div>
@@ -315,7 +339,6 @@
                             Latest Notices <a href="#" class="text-white small" style="text-transform:none; text-decoration:underline;">View All</a>
                         </div>
                         <div class="govt-panel-body" style="padding: 10px;">
-                            <!-- Vertical Scrolling Marquee exactly like SSC/UPSC -->
                             <marquee direction="up" scrollamount="3" onmouseover="this.stop();" onmouseout="this.start();" height="340px">
                                 <ul class="vertical-notice-list">
                                     <li>
